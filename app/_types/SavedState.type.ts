@@ -1,4 +1,4 @@
-import { Address } from './Address.type';
+import { Address } from './address.type';
 export type SavedState = {
   selectedSize: string | null;
   selectedColor: string | null;

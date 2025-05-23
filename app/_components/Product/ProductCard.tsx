@@ -9,7 +9,7 @@ import Image from "next/image";
 import { setWithExpiry, getWithExpiry } from "@/app/_utils/localStorageUtils";
 import { Product } from "@/app/_types/products.type";
 import { InputCep } from "@/app/_utils/cepInput";
-import { Address } from "@/app/_types/Address.type";
+import { Address } from "@/app/_types/address.type";
 import { SavedState } from "@/app/_types/SavedState.type";
 
 export function ProductCard({ product }: { product: Product }) {
@@ -29,7 +29,8 @@ export function ProductCard({ product }: { product: Product }) {
   };
 
   useEffect(() => {
-    const saved = getWithExpiry(storageKey) as SavedState | null;
+    const saved = getWithExpiry<SavedState>(storageKey);
+
     if (saved) {
       setSelectedSize(saved.selectedSize);
       setSelectedColor(saved.selectedColor);
