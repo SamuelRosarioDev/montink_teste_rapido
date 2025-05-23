@@ -1,4 +1,4 @@
-export function setWithExpiry(key: string, value: any, ttl: number) {
+export function setWithExpiry(key: string, value: number, ttl: number) {
     const now = new Date();
     const item = {
         value,

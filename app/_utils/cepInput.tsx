@@ -3,15 +3,25 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { calcularFrete } from "@/app/_utils/freteUtils";
+import { Address } from "@/app/_types/address.type";
 
 interface InputCepProps {
   cep: string;
   setCep: (cep: string) => void;
-  onFreteCalculated: (freteMsg: string | null, freteVal: number, address: any | null) => void;
+  onFreteCalculated: (
+    freteMsg: string | null,
+    freteVal: number,
+    address: Address | null
+  ) => void;
   setError: (error: string | null) => void;
 }
 
-export function InputCep({ cep, setCep, onFreteCalculated, setError }: InputCepProps) {
+export function InputCep({
+  cep,
+  setCep,
+  onFreteCalculated,
+  setError,
+}: InputCepProps) {
   const [loading, setLoading] = useState(false);
 
   const handleCheckCep = async () => {
@@ -28,7 +38,7 @@ export function InputCep({ cep, setCep, onFreteCalculated, setError }: InputCepP
 
     try {
       const res = await fetch(`https://viacep.com.br/ws/${numericCep}/json/`);
-      const data = await res.json();
+      const data: Address & { erro?: boolean } = await res.json();
 
       if (data.erro) {
         setError("CEP não encontrado.");
@@ -52,7 +62,9 @@ export function InputCep({ cep, setCep, onFreteCalculated, setError }: InputCepP
 
   return (
     <div className="mt-4">
-      <h3 className="font-semibold text-gray-700 mb-1">Consultar Entrega (CEP)</h3>
+      <h3 className="font-semibold text-gray-700 mb-1">
+        Consultar Entrega (CEP)
+      </h3>
       <div className="flex gap-2">
         <input
           type="text"
