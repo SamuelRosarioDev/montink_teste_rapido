@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { calcularFrete } from "@/app/_utils/freteUtils";
-import { Address } from "@/app/_types/address.type";
+import { Address } from "@/app/_types/adress.type";
 
 interface InputCepProps {
   cep: string;

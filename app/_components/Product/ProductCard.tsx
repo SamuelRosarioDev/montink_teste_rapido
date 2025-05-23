@@ -9,7 +9,7 @@ import Image from "next/image";
 import { setWithExpiry, getWithExpiry } from "@/app/_utils/localStorageUtils";
 import { Product } from "@/app/_types/products.type";
 import { InputCep } from "@/app/_utils/cepInput";
-import { Address } from "@/app/_types/address.type";
+import { Address } from "@/app/_types/adress.type";
 import { SavedState } from "@/app/_types/SavedState.type";
 
 export function ProductCard({ product }: { product: Product }) {
